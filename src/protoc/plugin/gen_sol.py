@@ -318,7 +318,7 @@ def generate_code(request, response):
 
     if generated > 0 and GEN_RUNTIME:
         try:
-            with open('/protoc/plugin/runtime/runtime.sol', 'r') as runtime:
+            with open('/c/local/pb3sol/src/protoc/plugin/runtime/runtime.sol', 'r') as runtime:
                 rf = response.file.add()
                 rf.name = RUNTIME_FILE_NAME
                 rf.content = runtime.read()
