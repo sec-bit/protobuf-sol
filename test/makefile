@@ -9,10 +9,9 @@ endef
 
 .PHONY: proto
 proto:
-	$(call soliditize,${INPUT_DIR}/TaskList.proto,"gen_runtime=True:${OUTPUT_DIR}")
 	$(call soliditize,${INPUT_DIR}/LoopRing.proto,"gen_runtime=True:${OUTPUT_DIR}")
 
-run: test_proto
+run: proto
 	bash ./tools/run_chain.sh
 	truffle test
 	kill `cat ./test_chain.pid`

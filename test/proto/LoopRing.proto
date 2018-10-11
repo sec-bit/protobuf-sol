@@ -12,12 +12,6 @@ message Mining {
 	repeated .solidity.uint8   sig = 3;
 }
 
-message Spendable {
-	required bool              initialized = 1;
-	required .solidity.uint    amount = 2;
-	required .solidity.uint    reserve = 3;
-}
-
 message Order {
         // required fields
 	required .solidity.address owner = 1;
@@ -26,14 +20,14 @@ message Order {
 	required .solidity.uint    amountS = 4;
 	required .solidity.uint    amountB = 5;
 	required .solidity.uint    validSince = 6;
-	required Spendable         tokenSpendableS = 7;
-	required Spendable         tokenSpendableFee = 8;
+	required .solidity.uint16  tokenSpendableS = 7;
+	required .solidity.uint16  tokenSpendableFee = 8;
 
         // optional fields
 	optional .solidity.address dualAuthAddr = 9;
 	optional .solidity.address broker = 10;
-        optional Spendable         brokerSpendableS = 11;
-        optional Spendable         brokerSpendableFee = 12;
+        optional .solidity.uint16  brokerSpendableS = 11;
+        optional .solidity.uint16  brokerSpendableFee = 12;
         optional .solidity.address orderInterceptor = 13;
         optional .solidity.address wallet = 14;
         optional .solidity.uint    validUntil = 15;
@@ -52,9 +46,7 @@ message Order {
 
 message Ring {
         required .solidity.uint    size = 1;
-        required .solidity.bytes32 hash = 2;
-        required .solidity.uint    minerFeesToOrdersPercentage = 3;
-        required bool              valid = 4;
+	repeated .solidity.uint    orders = 2;
 }
 
 message Input {
